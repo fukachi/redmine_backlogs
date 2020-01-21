@@ -1,20 +1,22 @@
 require_dependency 'projects_helper'
 
-module Backlogs
-  module ProjectsHelperPatch
+module BacklogsProjectsHelperPatch
+  #module ProjectsHelperPatch
 
-    def self.included(base)
-      base.send(:include, InstanceMethods)
-      base.class_eval do
-        unloadable
-        alias_method_chain :project_settings_tabs, :backlogs
-      end
-    end
+    #def self.included(base)
+    #  base.send(:include, InstanceMethods)
+    #  base.class_eval do
+    #    unloadable
+    #    alias_method :project_settings_tabs_without_backlogs, :project_settings_tabs
+    #    alias_method :project_settings_tabs, :project_settings_tabs_with_backlogs
+    #  end
+    #end
 
-    module InstanceMethods
+    #module InstanceMethods
 
-      def project_settings_tabs_with_backlogs
-        tabs = project_settings_tabs_without_backlogs
+      def project_settings_tabs
+        #tabs = project_settings_tabs_without_backlogs
+        tabs = super
         tabs << {:name => 'backlogs',
           :action => :manage_project_backlogs,
           :partial => 'backlogs/project_settings',
@@ -24,10 +26,10 @@ module Backlogs
         return tabs
       end
 
-    end
+    #end
 
-  end
+  #end
 end
 
-ProjectsHelper.send(:include, Backlogs::ProjectsHelperPatch) unless ProjectsHelper.included_modules.include? Backlogs::ProjectsHelperPatch
-
+#ProjectsHelper.send(:include, Backlogs::ProjectsHelperPatch) unless ProjectsHelper.included_modules.include? Backlogs::ProjectsHelperPatch
+ProjectsHelper.prepend(BacklogsProjectsHelperPatch)

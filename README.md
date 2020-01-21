@@ -1,13 +1,14 @@
 REDMINE BACKLOGS
 ----------------
 
-A Redmine plugin for agile teams. For more information,
-please visit https://backlogs.github.io/www/
+A plugin that adds an signboard feature.  
+(A Redmine plugin for agile teams. For more information,  
+please visit https://backlogs.github.io/www/ )  
 
 * Note it is version does not match the original website.
-* Fork that combines Redmine 3.4 and multiple tasks
-* Operation is confirmed with Redmine 3.4.6.
-* Probably not supported before 3.3. (unconfirmed)
+* Fork that combines Redmine 4.0 and multiple tasks
+* Operation is confirmed with Redmine 4.1.0.
+* For older versions, please use feature / redmine 3.4.6
 
 
 PROJECT HEALTH

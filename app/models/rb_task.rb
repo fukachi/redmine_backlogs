@@ -77,7 +77,7 @@ class RbTask < Issue
       end
     end
 
-    task = new(attribs)
+    task = new(attribs.permit!.to_h)
     if params['parent_issue_id']
       parent = Issue.find(params['parent_issue_id'])
       task.start_date = parent.start_date
@@ -130,7 +130,7 @@ class RbTask < Issue
                             true
                           end
 
-    if valid_relationships && result = self.journalized_update_attributes!(attribs)
+    if valid_relationships && result = self.journalized_update_attributes!(attribs.permit!.to_h)
       move_before params[:next] unless is_impediment # impediments are not hosted under a single parent, so you can't tree-order them
       update_blocked_list params[:blocks].split(/\D+/) if params[:blocks]
 
